@@ -5,18 +5,19 @@ pipeline {
     }
     stages {
         stage('Build') { 
-            steps { 
+            steps {
+            	echo 'Build..' 
                 git 'https://github.com/jirentaicho/jenkinstest'
             }
         }
         stage('Test'){
             steps {
-                
+                echo 'Test..'
             }
         }
         stage('Deploy') {
             steps {
-                
+                echo 'Deploy..'
             }
         }
     }
