@@ -7,10 +7,7 @@ pipeline {
         stage('Build') { 
             steps {
             	echo 'Build..' 
-            	git url: 'https://github.com/jirentaicho/jenkinstest'
-            	withMaven {
-            		sh "mvn clean verify"
-            	}
+            	bat 'mvn clean package'
             }
         }
         stage('Test'){
