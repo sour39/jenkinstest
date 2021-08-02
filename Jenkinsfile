@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps { 
-                
+                git 'https://github.com/jirentaicho/jenkinstest'
             }
         }
         stage('Test'){
