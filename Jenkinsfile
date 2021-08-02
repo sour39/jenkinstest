@@ -20,9 +20,6 @@ pipeline {
         stage('Test'){
             steps {
                 echo 'Test..'
-                echo 'show status'
-                sh 'mvn -version'
-                sh 'jave -version'
                 // sh './mvnw package'
                 sh './mvnw clean compile'
             }
