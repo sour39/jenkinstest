@@ -14,6 +14,7 @@ pipeline {
         stage('Test'){
             steps {
                 echo 'Test..'
+                sh './mvnw package'
             }
         }
         stage('Deploy') {
