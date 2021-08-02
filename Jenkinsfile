@@ -21,7 +21,7 @@ pipeline {
         stage('Make war file'){
         	steps {
         		echo 'Make war'
-        		sh './mvnw build package'
+        		sh './mvnw package'
         	}
         }
         stage('Deploy') {
