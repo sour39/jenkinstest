@@ -7,7 +7,6 @@ pipeline {
         stage('Build') { 
             steps {
             	echo 'Build..' 
-                git 'https://github.com/jirentaicho/jenkinstest'
             }
         }
         stage('Test'){
