@@ -20,7 +20,8 @@ pipeline {
         stage('Test'){
             steps {
                 echo 'Test..'
-                sh './mvnw package'
+                // sh './mvnw package'
+                sh './mvnw clean compile'
             }
         }
         stage('Deploy') {
