@@ -7,7 +7,8 @@ pipeline {
         stage('Build') { 
             steps {
             	echo 'Build..' 
-            	bat 'mvn clean package'
+            	checkout([$class: 'GitSCM', branches: [[name: '*/main']],
+     			userRemoteConfigs: [[url: 'https://github.com/jirentaicho/jenkinstest.git']]])
             }
         }
         stage('Test'){
