@@ -15,13 +15,17 @@ pipeline {
      			echo '----------------------'
      			sh 'pwd'
             	sh 'ls'
+            	sh './mvnw clean compile'
             }
         }
         stage('Test'){
             steps {
                 echo 'Test..'
-                // sh './mvnw package'
-                sh './mvnw clean compile'
+                sh './mvnw test'
+                post {
+                always {
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                }
             }
         }
         stage('Deploy') {
