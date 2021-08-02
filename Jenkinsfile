@@ -7,8 +7,10 @@ pipeline {
         stage('Build') { 
             steps {
             	echo 'Build..' 
-            	// sh './mvnw clean compile'
-            	bat '.\\mvnw clean compile'
+            	git url: 'https://github.com/jirentaicho/jenkinstest'
+            	withMaven {
+            		sh "mvn clean verify"
+            	}
             }
         }
         stage('Test'){
