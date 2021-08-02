@@ -7,14 +7,8 @@ pipeline {
         stage('Build') { 
             steps {
             	echo 'Build..' 
-            	sh 'pwd'
-            	sh 'ls'
             	checkout([$class: 'GitSCM', branches: [[name: '*/main']],
      			userRemoteConfigs: [[url: 'https://github.com/jirentaicho/jenkinstest.git']]])
-     			echo 'end checkout'
-     			echo '----------------------'
-     			sh 'pwd'
-            	sh 'ls'
             	sh './mvnw clean compile'
             }
         }
@@ -22,12 +16,13 @@ pipeline {
             steps {
                 echo 'Test..'
                 sh './mvnw test'
-                post {
-	                always {
-	                    junit '**/target/surefire-reports/TEST-*.xml'
-	                }
-	            }
             }
+        }
+        stage('Make war file'){
+        	steps {
+        		echo 'Make war'
+        		sh './mvnw build package'
+        	}
         }
         stage('Deploy') {
             steps {
