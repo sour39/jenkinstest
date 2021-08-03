@@ -27,6 +27,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploy..'
+                // 自分の環境のローカルホストを指定する
+                sh 'ssh root@192.168.11.13 -p 20022'
             }
         }
     }
