@@ -30,7 +30,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploy..'
-                def files = findFiles(glob: 'myproject.war')
+                def file = readFile 'output.txt'
                 
                 build(job: "ssh_Test", parameters: [string(name: "war_file", value: files[0])])
             }
