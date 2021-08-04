@@ -31,7 +31,7 @@ pipeline {
             steps {
                 echo 'Deploy..'
                 echo SSH_INFO
-                sh 'scp myproject.war root@192.168.11.13 -p 20022:/usr/local/tomcat/webapps/'
+                sh 'scp -p 20022 myproject.war root@192.168.11.13:/usr/local/tomcat/webapps/'
             }
         }
     }
