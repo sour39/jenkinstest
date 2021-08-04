@@ -2,6 +2,7 @@ pipeline {
     agent any 
     environment {
         SSH_INFO = credentials('dev')
+        def file = readFile 'output.txt'
     }
     options {
         skipStagesAfterUnstable()
@@ -30,7 +31,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploy..'
-                def file = readFile 'output.txt'
+                
                 
                 build(job: "ssh_Test", parameters: [string(name: "war_file", value: files[0])])
             }
