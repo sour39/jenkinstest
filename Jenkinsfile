@@ -2,7 +2,8 @@ pipeline {
     agent any 
     environment {
         SSH_INFO = credentials('dev')
-        def war_file = findFile(glob: 'myproject.war')
+        def files = findFiles(glob: 'myproject.war')
+        def file = files[0]
     }
     options {
         skipStagesAfterUnstable()
