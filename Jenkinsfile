@@ -33,7 +33,7 @@ pipeline {
                 echo 'Deploy..'
                 
                 
-                build(job: "ssh_Test", parameters: [string(name: "war_file", value: files[0])])
+                build(job: "ssh_Test", parameters: [string(name: "war_file", value: file)])
             }
         }
     }
