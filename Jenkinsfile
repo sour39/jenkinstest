@@ -2,7 +2,7 @@ pipeline {
     agent any 
     environment {
         SSH_INFO = credentials('dev')
-        def file = readFile 'output.txt'
+        def file = readFile 'target/myproject.war'
     }
     options {
         skipStagesAfterUnstable()
