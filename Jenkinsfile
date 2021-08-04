@@ -30,9 +30,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploy..'
-                sshagent(['661da038-a590-47f8-b3b3-6f69de4bb1fe']) {
-                    sh 'ssh -t root@192.168.11.13 -p 20022'
-                }
+                build(job: "ssh_Test", parameters: [string(name: "war_file", value: myproject.war)])
             }
         }
     }
