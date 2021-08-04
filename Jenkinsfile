@@ -30,8 +30,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploy..'
-                echo SSH_INFO
-                sh 'scp -P 20022 myproject.war root@192.168.11.13:/usr/local/tomcat/webapps/'
+                sshagent(['661da038-a590-47f8-b3b3-6f69de4bb1fe']) {
+                    sh 'scp -P 20022 myproject.war root@192.168.11.13:/usr/local/tomcat/webapps/'
+                }
             }
         }
     }
