@@ -2,6 +2,7 @@ pipeline {
     agent any 
     environment {
         SSH_INFO = credentials('dev')
+        def war_file = findFile(glob: 'myproject.war')
     }
     options {
         skipStagesAfterUnstable()
@@ -30,7 +31,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploy..'
-                build(job: "ssh_Test", parameters: [string(name: "war_file", value: myproject.war)])
+                build(job: "ssh_Test", parameters: [string(name: "war_file", value: war_file)])
             }
         }
     }
