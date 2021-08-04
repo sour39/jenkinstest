@@ -29,9 +29,9 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploy..'
-                // 自分の環境のローカルホストを指定する
-                echo SSH_INFO
+                sshagent(['dev']) {
+                    sh 'scp myproject.war root@192.168.11.13 -p 20022:/usr/local/tomcat/webapps/'
+                }
             }
         }
     }
