@@ -1,8 +1,6 @@
 pipeline { 
     agent any 
-    environment {
-        SSH_INFO = credentials('root')
-    }
+
     options {
         skipStagesAfterUnstable()
     }
