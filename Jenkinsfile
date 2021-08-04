@@ -29,7 +29,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sshagent(['dev']) {
+                sshagent(['root']) {
                     sh 'scp myproject.war root@192.168.11.13 -p 20022:/usr/local/tomcat/webapps/'
                 }
             }
