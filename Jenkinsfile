@@ -31,10 +31,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploy..'
-                
-                
-                build(job: "ssh_Test", parameters: [string(name: "war_file", value: file)])
-            }
+                deploy adapters: [tomcat9(credentialsId: 'tomcat_misaka', path: '', url: 'http://192.168.11.13:8012')], contextPath: null, war: './target/*.war'
         }
     }
 }
