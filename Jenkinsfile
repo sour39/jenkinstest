@@ -32,6 +32,7 @@ pipeline {
             steps {
                 echo 'Deploy..'
                 deploy adapters: [tomcat9(credentialsId: 'tomcat_misaka', path: '', url: 'http://192.168.11.13:8012')], contextPath: null, war: './target/*.war'
+            }
         }
     }
 }
