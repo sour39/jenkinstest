@@ -11,6 +11,8 @@ pipeline {
         stage('Build') { 
             steps {
             	echo 'Build..' 
+                sh 'pwd'
+            	sh 'ls'
             	checkout([$class: 'GitSCM', branches: [[name: '*/main']],
      			userRemoteConfigs: [[url: 'https://github.com/jirentaicho/jenkinstest.git']]])
             	//sh './mvnw clean compile'
@@ -31,9 +33,6 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploy..'
-                echo pwd
-                echo '----'
-                echo ls
                 deploy adapters: [tomcat9(credentialsId: 'tomcat_misaka', path: '', url: 'http://192.168.11.13:8012')], contextPath: null, war: './target/*.war'
             }
         }
